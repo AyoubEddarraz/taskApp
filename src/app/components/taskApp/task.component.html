@@ -1,0 +1,32 @@
+<h2 class="w-100 bg-primary py-3 text-center text-light shadow mb-5"> app todo list </h2>
+
+
+<div class="main shadow rounded-lg p-5">
+    <div class="form-group d-flex">
+        <input type="text" class="form-control" placeholder="add task..." ngModel [(ngModel)]="newtaskForm.name"> 
+        <button class="btn btn-primary"  [hidden]="updateactive" (click)="addtask()" [disabled]="newtaskForm.name.length === 0"><i class="fas fa-plus"></i></button>
+        <button class="btn btn-danger" [hidden]="!updateactive" (click)="updateitem()"><i class="fas fa-edit"></i></button>
+    </div>
+
+    <hr>
+
+    <div class="tasks">
+        <div class="task d-flex bg-light py-3 px-4 rounded-lg shadow my-2" (dblclick)="removetask(i)" *ngFor="let task of listOftasks ; index as i">
+            <div class="completed"><div class="shadow" (click)="changeStatusComplitedtask(i)"><i class="fas" [ngClass]="{'fa-check' : task.complited , 'fa-times' : !task.complited  }"></i></div></div>
+            <div class="name text-center"> {{ task.name }} </div>
+            <div class="edit"><div class="shadow" (click)="updatetask(i)"><i class="fas fa-edit"></i></div></div>
+            <div class="delete"><div class="shadow" (click)="removetask(i)"><i class="fas fa-trash-alt"></i></div></div>
+        </div>
+    </div>
+
+</div>
+
+<div class="state py-3 text-center bg-primary shadow rounded-lg d-flex text-light" *ngIf="listOftasks.length != 0">
+    <div class="numbertasks"> <strong> active task :  </strong>  {{ numberoftasks }} </div>
+    <div class="numberComplitedtasks"> <strong> task complited :  </strong> {{ numberoftaskcomplited }} of {{ numberoftasks }} </div>
+</div>
+
+
+<div class="state py-3 text-center bg-danger shadow rounded-lg text-light" *ngIf="listOftasks.length == 0">
+    no task to show
+</div>

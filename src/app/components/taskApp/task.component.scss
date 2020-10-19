@@ -1,0 +1,86 @@
+h2{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.shodowdivchild{
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.main{
+    position: relative;
+    width: 60%;
+    height: 500px;
+    background-color: white;
+    margin: 1rem auto;
+    overflow: hidden;
+
+    .tasks{
+        width: 100%;
+        height: 350px;
+        padding: 1rem 2rem;
+        overflow: hidden scroll;
+
+        &::-webkit-scrollbar{
+            width: 10px;
+        }
+    
+        &::-webkit-scrollbar-track {
+            background: white;
+            box-shadow: inset 0 0 5px white;
+            border-radius: 9999px;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            background: #007bff; 
+            border-radius: 9999px;
+        }
+
+        .task {
+            .name{
+                font-size: 15px;
+                font-weight: bold;
+                color: #007bff;
+            }
+
+            .completed > div{
+                @extend .shodowdivchild;
+                background-color: #7bed9f;
+            }
+
+
+            .edit > div {
+                @extend .shodowdivchild;
+                background-color: #eccc68;
+            }
+
+            .delete > div{
+                @extend .shodowdivchild;
+                background-color: #ff4757;
+            }
+        }
+
+        .task > div{
+            width: 10%;
+        }
+
+        .task .name{
+            width: 70%;
+        }
+
+    }
+}
+
+.state{
+    width: 60%;
+    margin: 0 auto;
+
+    & > div{
+        width: 50%;
+    }
+}
